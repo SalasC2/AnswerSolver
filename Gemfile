@@ -14,10 +14,6 @@ gem 'rake'
 
 gem 'shotgun', '~>0.9.1'
 gem 'bcrypt'
-gem 'pry'
-gem 'rb-readline'
-gem 'awesome_print'
-gem 'faker'
 
 group :test do
   gem 'shoulda-matchers'

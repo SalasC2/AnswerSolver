@@ -1,3 +1,6 @@
-10.times do
-  User.create(username: Faker::Internet.user_name, email: Faker::Internet.email, password: Faker::Internet.password(5))
+3.times do
+  Question.create(inquiry: Faker::Hipster.sentences, title: Faker::GameOfThrones.house)
+  Answer.create(solution: Faker::Hipster.words(3))
+  Comment.create(remark: Faker::Hipster.sentences)
+  User.create(username: Faker::GameOfThrones.character, email: Faker::Internet.email, password: Faker::Internet.password(5))
 end

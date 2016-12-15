@@ -16,9 +16,8 @@ require 'active_record'
 require 'logger'
 
 require 'bcrypt'
-require 'awesome_print'
-require 'pry'
 require 'faker'
+require 'pp'
 
 require 'sinatra'
 require "sinatra/reloader" if development?
