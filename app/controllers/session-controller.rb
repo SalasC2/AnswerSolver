@@ -20,4 +20,5 @@ end
 delete '/logout' do
   logout
   # route
+  erb :index
 end
