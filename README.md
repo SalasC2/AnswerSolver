@@ -1,7 +1,9 @@
 Replica of StackOverflow
 
 Name of Team: The AnswerSolvers
+
 Members: Katte, Andy, Jess, Andy, Christian
+
 MVP:
   - Users can ask questions
   - They can view their questions
