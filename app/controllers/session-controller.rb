@@ -8,6 +8,7 @@ post '/login' do
   if @user && @user.password == params[:user][:password]
     login(@user)
     # route
+    erb :index
   else
     status 422
     @login_error = 'Username and Password does NOT match !'

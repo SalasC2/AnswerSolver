@@ -1,0 +1,10 @@
+<% if current_user %>
+  <h1> Welcome <%= current_user.username %> </h1>
+  <% else %>
+  <h1> Welcome guest </h1>
+  <h2> Click <a href="/users/new" > heer </a> to sign up or <a href="/login"> here </a> to log in </h2>
+<% end %>
+
+
+<p> <a href="">
+

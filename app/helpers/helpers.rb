@@ -6,7 +6,8 @@ helpers do
 
   def logout
     session.clear
-    # or session.delete(:user_id)
+    # or
+    # session.delete(:user_id)
   end
 
   def current_user
