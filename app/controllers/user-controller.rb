@@ -12,12 +12,11 @@ post '/users/new' do
     login(@user)
     erb :index
     # route
-    else
-      @password_error = 'Password can`t be blank !'
-      status 422
-      @errors = @user.errors.full_messages
-      erb :'/users/new'
+  else
+    @password_error = 'Password can`t be blank !'
+    status 422
+    @errors = @user.errors.full_messages
+    erb :'/users/new'
   end
-
 
 end
