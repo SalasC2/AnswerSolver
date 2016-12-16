@@ -4,7 +4,7 @@
   <ul>
     <% @question.answers.each do |sol| %>
       <div id = 'answer-<%=sol.id%>'>
-        <h3> <%= sol.user %> says </h3>
+        <h3> <%= sol.user.username %> says </h3>
         <li class='solution'><%= sol.solution %> </li>
       </div>
       <% if sol.user == current_user %>
