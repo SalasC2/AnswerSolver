@@ -13,13 +13,13 @@ class User < ActiveRecord::Base
     self.password_hash = @password
   end
 
-  def self.unlock(email, password)
-    user = User.find_by(email: email)
-    if user && user.password == password
-      user
-    else
-      nil
-    end
-  end
+  # def self.unlock(email, password)
+  #   user = User.find_by(username: username)
+  #   if user && user.password == password
+  #     user
+  #   else
+  #     nil
+  #   end
+  # end
 
 end

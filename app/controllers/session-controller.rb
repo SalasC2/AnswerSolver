@@ -1,24 +1,21 @@
 get '/login' do
-  erb :'/sessions/new'
+  erb :'/users/login.html'
 end
 
 post '/login' do
-  @user = User.unlock(params[:user][:username], params[:user][:password])
-
-  if @user && @user.password == params[:user][:password]
+  @user = User.find_by(username: params[:username])
+  
+  if @user.password == params[:password]
     login(@user)
-    # route
-    erb :index
+    redirect "/users/#{@user.id}/profile"
   else
     status 422
-    @login_error = 'Username and Password does NOT match !'
-    erb :'/sessions/new'
+    @login_error = 'Username and Password does NOT match!'
+    redirect '/login'
   end
-
 end
 
 delete '/logout' do
   logout
-  # route
-  erb :index
+  redirect '/login'
 end

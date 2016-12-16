@@ -3,13 +3,13 @@ get '/questions' do
 
   @questions = Question.all #define instance variable for view
 
-  erb :'questions/index' #show all questions view (index)
+  erb :'questions/index.html' #show all questions view (index)
 
 end
 
 get '/questions/new' do
 
-  erb :'questions/new' #show new questions view
+  erb :'questions/new.html' #show new questions view
 
 end
 
@@ -17,12 +17,11 @@ post '/questions' do
 
   #below works with properly formatted params in HTML form
   @question = Question.new(params[:question]) #create new question
-  @question.user = current_user
-
   if @question.save #saves new question or returns false if unsuccessful
     redirect "/questions/#{@question.id}" #redirect back to questions index page
+    p "it saved"
   else
-    erb :'questions/new' # show new questions view again(potentially displaying errors)
+    erb :'questions/new.html' # show new questions view again(potentially displaying errors)
   end
 
 end
@@ -33,7 +32,7 @@ get '/questions/:id' do
 
   @question = Question.find(params[:id]) #define instance variable for view
 
-  erb :'questions/show' #show single question view
+  erb :'questions/show.html' #show single question view
 
 end
 
@@ -42,7 +41,7 @@ get '/questions/:id/edit' do
   #get params from url
   @question = Question.find(params[:id]) #define intstance variable for view
 
-  erb :'questions/edit' #show edit question view
+  erb :'questions/edit.html' #show edit question view
 
 end
 
