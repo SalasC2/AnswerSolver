@@ -4,7 +4,7 @@ end
 
 post '/login' do
   @user = User.find_by(username: params[:username])
-  
+
   if @user.password == params[:password]
     login(@user)
     redirect "/users/#{@user.id}/profile"
@@ -17,5 +17,5 @@ end
 
 delete '/logout' do
   logout
-  redirect '/login'
+  redirect '/'
 end

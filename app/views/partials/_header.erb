@@ -1,10 +1,22 @@
 <nav>
-  <h3> <a href="/">Home</a> </h3>
+  <form method="LINK" action="/">
+    <input type="submit" VALUE="Home">
+ </form>
   <% if current_user %>
      <a href="users/<%= current_user.id%>/profile"> Welcome <%=current_user.username%></a><br>
-    <a href="/logout">Log Out</a>
+
+     <form action="/logout" method="post">
+       <input type="hidden" name="_method" value="delete">
+       <input type="submit" value="sign out">
+     </form>
+
   <%else%>
-    <p><a href="/login">Log In</a> <br>
-    <a href= "users/new">Sign Up</a></p>
+      <form method="LINK" action="/login">
+        <input type="submit" VALUE="Login">
+     </form>
+
+     <form method="LINK" action="/users/new">
+       <input type="submit" VALUE="Sign Up">
+     </form>
   <%end%>
 </nav>
