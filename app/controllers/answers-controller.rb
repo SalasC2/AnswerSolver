@@ -12,7 +12,7 @@ get '/questions/:question_id/answers/new' do
 
   @question = Question.find(params[:question_id])
 
-  erb :'answers/new'
+  erb :'answers/_new.html'
 
 end
 
@@ -47,7 +47,7 @@ get '/questions/:question_id/answers/:id/edit' do
 
   @answer = @question.answers.find(params[:id])
 
-  erb :'answers/edit.html'
+  erb :'answers/_edit.html'
 
 end
 
@@ -60,7 +60,7 @@ put '/questions/:question_id/answers/:id' do
   if @answer.update_attributes(params[:answer])
     redirect "/questions/#{@question.id}"
   else
-    erb :'answers/_edit' #show edit answers view again(potentially displaying errors)
+    erb :'answers/_edit.html' #show edit answers view again(potentially displaying errors)
   end
 
 end
