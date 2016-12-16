@@ -1,5 +1,12 @@
 <h1> Question: <%= @question.title %></h1>
 <h3> Description: <%= @question.inquiry %> </h3>
+
+<% if @question.user == current_user %>
+  <form class='delete-question-button' action='/question/@question.id' method='post'>
+    <input type='hidden' value = 'delete' >
+    <input type='submit' value='delete'>
+  </form>
+<% end %>
 <div class='answer-containter'>
   <ul>
     <% @question.answers.each do |sol| %>
