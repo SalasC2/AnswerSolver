@@ -17,10 +17,9 @@ post '/questions' do
 
   #below works with properly formatted params in HTML form
   @question = Question.new(params[:question]) #create new question
-  @question.user = current_user
-
   if @question.save #saves new question or returns false if unsuccessful
     redirect "/questions/#{@question.id}" #redirect back to questions index page
+    p "it saved"
   else
     erb :'questions/new.html' # show new questions view again(potentially displaying errors)
   end
