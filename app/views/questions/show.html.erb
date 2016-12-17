@@ -2,8 +2,8 @@
 <h3> Description: <%= @question.inquiry %> </h3>
 
 <% if @question.user == current_user %>
-  <form class='delete-question-button' action='/question/@question.id' method='post'>
-    <input type='hidden' value = 'delete' >
+  <form class='delete-question-button' action='/questions/<%= @question.id %>' method='post'>
+    <input type='hidden' name = '_method' value  = 'delete' >
     <input type='submit' value='delete'>
   </form>
 <% end %>
