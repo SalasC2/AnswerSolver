@@ -1,14 +1,15 @@
 <center>
 
-<h1> Questions </h1>
+  <h1> Questions </h1>
 
-<% @questions.each do |question| %>
- <a href = "/questions/<%=question.id%>" > <%= question.title %> </a> <br>
-<% end %>
- </center>
+  <div class = "questions">
+  <% @questions.each do |question| %>
+   <a href = "/questions/<%=question.id%>" > <%= question.title %> </a> <br>
+  <% end %>
+  </div>
+
+</center>
 
 <div class="new-question">
-
-
-<a href = '/questions/new'>Ask a question</a>
+  <a class = "new-q" href = '/questions/new'>Ask a question</a>
 </div>

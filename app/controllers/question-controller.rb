@@ -9,7 +9,11 @@ end
 
 get '/questions/new' do
 
-  erb :'questions/new.html' #show new questions view
+  if request.xhr?
+    erb :"questions/_new.html", layout: false
+  else
+    erb :'questions/new.html'
+  end
 
 end
 
@@ -18,11 +22,19 @@ post '/questions' do
   #below works with properly formatted params in HTML form
   @question = Question.new(params[:question]) #create new question
   @question.user = current_user
-  if @question.save #saves new question or returns false if unsuccessful
-    redirect "/questions/#{@question.id}" #redirect back to questions index page
-    p "it saved"
+
+  if request.xhr?
+    if @question.save
+      erb :"questions/_questionTitle.html", layout: false
+    else
+      "You broke it"
+    end
   else
-    erb :'questions/new.html' # show new questions view again(potentially displaying errors)
+    if @question.save #saves new question or returns false if unsuccessful
+      redirect "/questions/#{@question.id}" #redirect back to questions index page
+    else
+      erb :'questions/new.html' # show new questions view again(potentially displaying errors)
+    end
   end
 
 end
@@ -30,8 +42,6 @@ end
 get '/questions/:id' do
 
   #gets params from url
-  p current_user
-
   @question = Question.find(params[:id]) #define instance variable for view
 
   erb :'questions/show.html' #show single question view
