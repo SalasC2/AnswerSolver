@@ -1,7 +1,5 @@
-<div class='edit-answer'>
-  <form class = "submitAIndex" action = '/questions/<%= @question.id %>/answers/<%= @answer.id %>' method = 'post'>
+  <form action = '/questions/<%= @question.id %>/answers/<%= @answer.id %>' method = 'post'>
     <input type="textarea" name="answer[solution]">
     <input type='submit' value = "submit" >
     <input type = 'hidden' name='_method' value='put' >
   </form>
-</div>

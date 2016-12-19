@@ -5,6 +5,8 @@ $(document).ready(function() {
 var bindEventListener = function() {
   newForm();
   submitQuestion();
+  editAnswer();
+  submitChangeA();
 }
 
 var newForm = function() {
@@ -41,6 +43,50 @@ var submitQuestion = function(){
       $('.questions').append(res);
       $('.form-title').remove();
       $('.new-q').show();
+    });
+  });
+}
+
+var editAnswer = function(){
+  $('.e-l-a').on('click', function(event) {
+    event.preventDefault();
+    var something  = this;
+    var route = $(this).attr('href');
+    var form = $.ajax({
+      url: route,
+      method: "GET"
+    });
+
+    form.done(function(res){
+      $('#edit-link-a').append(res);
+      $('.e-l-a').hide();
+    });
+  });
+}
+
+var counter = 1;
+
+var submitChangeA = function() {
+  $('#edit-link-a').on("submit", ".submitAIndex", function(){
+    event.preventDefault();
+    var route = $(this).attr("action");
+    var data = $(this).serialize();
+
+    var submit = $.ajax({
+      url: route,
+      type: "PUT",
+      data: data
+    });
+
+    submit.done(function(res) {
+      $('#answer-id').each(function(i){
+        $('<div></div>', {
+            "class": "solution",
+            "id": "id_" + i
+        }).empty().appendTo(".solution");
+      });
+      $('.edit-answer').remove();
+      $('.e-l-a').show();
     });
   });
 }

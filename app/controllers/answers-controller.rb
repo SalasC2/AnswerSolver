@@ -47,7 +47,11 @@ get '/questions/:question_id/answers/:id/edit' do
 
   @answer = @question.answers.find(params[:id])
 
-  erb :'answers/_edit.html'
+  if request.xhr?
+    erb :'answers/_edit.html', layout: false
+  else
+    erb :'answers/edit.html'
+  end
 
 end
 
@@ -57,10 +61,14 @@ put '/questions/:question_id/answers/:id' do
 
   @answer = @question.answers.find(params[:id])
 
-  if @answer.update_attributes(params[:answer])
-    redirect "/questions/#{@question.id}"
+  if request.xhr?
+    if @answer.update_attributes(params[:answer])
+      erb :"/answers/_show.html", layout: false
+    else
+      erb :'answers/_edit.html' #show edit answers view again(potentially displaying errors)
+    end
   else
-    erb :'answers/_edit.html' #show edit answers view again(potentially displaying errors)
+     "No no"
   end
 
 end

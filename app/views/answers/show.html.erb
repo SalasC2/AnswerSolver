@@ -1,0 +1,13 @@
+<%= @answer.solution %>
+<%= @user.username %>
+<%= @answer.created_at %>
+<% if @user = current_user %>
+  <form class = "delete-answer" action = '/question/<%=@question.id%>/answers/<%=@answer.id %>/edit' method = 'post'>
+    <input type=hidden name= '_method' value = 'put' />
+    <input type= 'submit' value = 'edit' />
+  </form>
+  <form action = '/question/<%=@question.id%>/answers/<%=@answer.id %>/delete' method = 'post'>
+    <input type=hidden name= '_method' value = 'delete' />
+    <input type= 'submit' value = 'delete' />
+  </form>
+<% end %>
